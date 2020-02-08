@@ -17,7 +17,7 @@ const memberSchema = mongoose.Schema({
     sex: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Genders', 
-        required: true 
+        // required: true 
     },
 });
 

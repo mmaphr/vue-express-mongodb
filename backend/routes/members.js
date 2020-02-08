@@ -23,11 +23,9 @@ router.get("/", (req, res, next) => {
 router.post("/", (req, res, next) => {
     Gender.findById(req.body.genderId)
       .then(gender => {
-        if (!gender) {
-          return res.status(404).json({
-            message: "Gender not found"
-          });
-        }
+        // if(!gender) {
+        //   return res.status(404).json({message: "Gender not found"})
+        // }
         const member = new Member({
           _id: mongoose.Types.ObjectId(),
           quantity: req.body.quantity,
@@ -61,6 +59,23 @@ router.post("/", (req, res, next) => {
           error: err
         });
     });
+});
+
+router.put('/', function (req, res) {
+  var company = req.company;
+
+  company = _.extend(company, req.body);
+
+  company.save(function(err) {
+  if (err) {
+      return res.send('/', {
+          errors: err.errors,
+          company: company
+      });
+  } else {
+      res.jsonp(company);
+  }
+
 });
 
 router.get("/:memberId", (req, res, next) => {

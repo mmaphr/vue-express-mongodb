@@ -76,7 +76,7 @@ export default {
         this.age,
         this.gender
       );
-      window.location.reload()
+      // window.location.reload()
     },
     remove(id) {
       api.deleteMember(id);
